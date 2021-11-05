@@ -1,0 +1,54 @@
+{
+  "name": "@robotsandpencils/express-oauth",
+  "version": "0.1.0",
+  "description": "OAuth 2.0 Middleware with CSRF mitigation for Express",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint .",
+    "pre-push": "node pre-push.js",
+    "test": "node test.js",
+    "test:coverage": "nyc node test.js",
+    "test:coverage:ci": "mkdir -p ./coverage && touch ./coverage/lcov.info && nyc pnpm run test:ci && nyc report --reporter=text-lcov > ./coverage/lcov.info",
+    "test:coveralls": "nyc pnpm run test:ci && nyc report --reporter=text-lcov | coveralls",
+    "test:ci": "node test.js -r tap,summary"
+  },
+  "pre-push": [
+    "lint",
+    "test",
+    "pre-push"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RobotsAndPencils/express-oauth.git"
+  },
+  "author": "Andy Wright <andes.collab@gmail.com> (https://github.com/losandes)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RobotsAndPencils/express-oauth/issues"
+  },
+  "homepage": "https://github.com/RobotsAndPencils/express-oauth#readme",
+  "keywords": [
+    "express",
+    "oauth",
+    "middleware"
+  ],
+  "devDependencies": {
+    "@polyn/logger": "~0.5.2",
+    "coveralls": "~3.1.1",
+    "eslint": "~8.1.0",
+    "eslint-config-standard": "~16.0.3",
+    "eslint-plugin-import": "~2.25.2",
+    "eslint-plugin-node": "~11.1.0",
+    "eslint-plugin-promise": "~5.1.1",
+    "nyc": "~15.0.1",
+    "pre-push": "~0.1.1",
+    "supposed": "~1.1.1",
+    "unexpected": "~11.14.0"
+  },
+  "dependencies": {
+    "@polyn/blueprint": "~2.5.4",
+    "@polyn/immutable": "~1.0.11",
+    "cookie": "~0.4.1",
+    "jsonwebtoken": "~8.5.1"
+  }
+}
