@@ -10,7 +10,7 @@ Generally we like to see pull requests that:
 -   Have tests
 -   Do not decrease the current code coverage
 
-## Git Strategy
+### Curating Git Commit History
 
 Use a squash rebase workflow using [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/), and [trunk based branching](https://trunkbaseddevelopment.com).
 
