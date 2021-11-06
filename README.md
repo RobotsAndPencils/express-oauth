@@ -36,7 +36,8 @@ const authorizePath = '/slack/install/authorize'
 const verifyPath = '/slack/install/verify'
 
 app.get(authorizePath, async (req, res, next) => {
-  const { synchronizer } = await makeState(req, res)
+  const data = { foo: 'bar' } // state data we want to use when oauth is complete
+  const { synchronizer } = await makeState(data)(req, res)
   const queryObject = {
     client_id: process.env.SLACK_CLIENT_ID,
     response_type: 'code',
@@ -64,7 +65,7 @@ app.get(authorizePath, async (req, res, next) => {
 })
 
 app.get(verifyPath, async (req, res, next) => {
-  await verifyState(req, res)
+  const { data } = await verifyState(req, res)
   const tokenRes = await new WebClient()
     .oauth.v2.access({
       code: req.query.code,
@@ -77,6 +78,7 @@ app.get(verifyPath, async (req, res, next) => {
           .auth.test()
 
   // save user and team data to a database
+  // maybe do something with the state `data`?
 
   const redirectURL = `slack://app?team=${team.id}&id=${team.appId}`
   const htmlResponse = '<html>' +
