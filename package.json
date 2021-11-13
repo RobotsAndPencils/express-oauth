@@ -29,8 +29,11 @@
   "homepage": "https://github.com/RobotsAndPencils/express-oauth#readme",
   "keywords": [
     "express",
+    "expressjs",
     "oauth",
-    "middleware"
+    "oauth2",
+    "express-middleware",
+    "expressjs-middleware"
   ],
   "devDependencies": {
     "@polyn/logger": "~0.5.2",
